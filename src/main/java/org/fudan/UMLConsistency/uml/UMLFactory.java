@@ -20,4 +20,10 @@ public interface UMLFactory {
      */
     UMLDefinition getDefinitionByName(String name);
 
+    /**
+     * Create a new instance of a UMLBean
+     * @return The new instance
+     */
+    UMLBean getBeanNewInstance();
+
 }
