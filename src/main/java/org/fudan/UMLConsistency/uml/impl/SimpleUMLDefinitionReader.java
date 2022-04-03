@@ -2,6 +2,7 @@ package org.fudan.UMLConsistency.uml.impl;
 
 import org.fudan.UMLConsistency.uml.UMLDefinition;
 import org.fudan.UMLConsistency.uml.UMLDefinitionReader;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -15,7 +16,7 @@ import java.io.Reader;
  */
 public class SimpleUMLDefinitionReader implements UMLDefinitionReader {
 
-    private BufferedReader bufferedReader;
+    private final BufferedReader bufferedReader;
 
     public SimpleUMLDefinitionReader(InputStream inputStream){
         this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

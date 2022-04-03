@@ -8,7 +8,8 @@ package org.fudan.UMLConsistency.uml;
 public interface UMLFactory {
 
     /**
-     * Refresh definition of UMLDefinitionMap from the reader
+     * Refresh definition of UMLDefinitionMap from the reader.
+     * Get all uml definition from reader
      * @param umlDefinitionReader The definition reader needed
      */
     void refresh(UMLDefinitionReader umlDefinitionReader);
@@ -22,8 +23,10 @@ public interface UMLFactory {
 
     /**
      * Create a new instance of a UMLBean
+     * @param UMLName UML target name
+     * @param instanceName instance name
      * @return The new instance
      */
-    UMLBean getBeanNewInstance();
+    UMLBean getBeanNewInstance(String UMLName, String instanceName);
 
 }

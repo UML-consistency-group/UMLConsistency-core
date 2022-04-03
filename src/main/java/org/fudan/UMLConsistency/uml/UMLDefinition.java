@@ -3,7 +3,7 @@ package org.fudan.UMLConsistency.uml;
 import org.fudan.UMLConsistency.uml.cons.AttributeType;
 import org.fudan.UMLConsistency.uml.cons.RelationType;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author: zlyang
@@ -16,7 +16,7 @@ public interface UMLDefinition {
      * Get all attribute declared by the UML
      * @return The attribute name list of the UML
      */
-    List<String> getAllAttribute();
+    Set<String> getAllAttribute();
 
     /**
      * Judge if the attribute is contains in this definition
@@ -30,7 +30,7 @@ public interface UMLDefinition {
      * @return The name of the reference/relation target UML;
      *         The void List(NOT NULL ref) when current UML has no relation.
      */
-    List<String> getAllReference();
+    Set<UMLDefinition> getAllReference();
 
     /**
      * Judge if the reference is contains in this definition
@@ -52,5 +52,12 @@ public interface UMLDefinition {
      * @return The Relation type
      */
     RelationType getReferenceType(String name);
+
+    /**
+     * Get a new instance of current uml
+     * @param name Instance name
+     * @return The new instance
+     */
+    UMLBean getNewInstance(String name);
 
 }
