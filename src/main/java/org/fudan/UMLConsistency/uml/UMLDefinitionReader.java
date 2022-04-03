@@ -1,5 +1,7 @@
 package org.fudan.UMLConsistency.uml;
 
+import java.util.Map;
+
 /**
  * @author: zlyang
  * @date: 2022-04-03 10:42
@@ -8,14 +10,15 @@ package org.fudan.UMLConsistency.uml;
 public interface UMLDefinitionReader {
 
     /**
-     * Get next definition
-     * @return next UML definition
+     * Get all UML class defined in file
+     * @return {className: {attributeName: attributeType}}
      */
-    UMLDefinition next();
+    Map<String, Map<String, String>> getAllClass();
 
     /**
-     * To Judge if has more definition to read
-     * @return true if more is valid, false otherwise
+     * Get all UML relation defined in file
+     * @return {relationName: {className: relationType}}
      */
-    boolean hasNext();
+    Map<String, Map<String, String>> getAllRelation();
+
 }

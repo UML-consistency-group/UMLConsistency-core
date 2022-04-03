@@ -4,6 +4,9 @@ import org.fudan.UMLConsistency.uml.UMLDefinitionReader;
 import org.fudan.UMLConsistency.uml.impl.SimpleUMLDefinitionReader;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+import java.io.IOException;
 
 /**
  * @author: zlyang
@@ -14,8 +17,8 @@ import org.springframework.context.annotation.Configuration;
 public class UMLConfig {
 
     @Bean
-    UMLDefinitionReader getUMLDefinitionReader(){
-        return new SimpleUMLDefinitionReader(System.in);
+    UMLDefinitionReader getUMLDefinitionReader() throws IOException {
+        return new SimpleUMLDefinitionReader(new ClassPathResource("test/test.yaml").getInputStream());
     }
 
 }

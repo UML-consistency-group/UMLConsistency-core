@@ -1,0 +1,11 @@
+class:
+  A:
+    x: Integer
+    bcd: String
+  B:
+    x: Boolean
+
+association:
+  R:
+    A: single
+    B: multiple

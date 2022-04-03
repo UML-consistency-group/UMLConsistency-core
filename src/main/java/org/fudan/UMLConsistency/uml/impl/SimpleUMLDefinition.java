@@ -28,6 +28,23 @@ public class SimpleUMLDefinition implements UMLDefinition {
     }
 
     @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public UMLDefinition addAttribute(String name, AttributeType type) {
+        attributes.put(name, type);
+        return this;
+    }
+
+    @Override
+    public UMLDefinition addReference(UMLDefinition target, RelationType type) {
+        references.put(target, type);
+        return this;
+    }
+
+    @Override
     public Set<String> getAllAttribute() {
         return attributes.keySet();
     }
@@ -60,5 +77,14 @@ public class SimpleUMLDefinition implements UMLDefinition {
     @Override
     public UMLBean getNewInstance(String name) {
         return new SimpleUMLBean(name, this);
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleUMLDefinition{" +
+                "name='" + name + '\'' +
+                ", attributes=" + attributes +
+                ", references=" + references.entrySet().stream().map(e -> e.getKey().getName() + ": " + e.getValue().toString()).collect(Collectors.toList()) +
+                '}';
     }
 }

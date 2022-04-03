@@ -4,9 +4,14 @@ import org.fudan.UMLConsistency.uml.UMLBean;
 import org.fudan.UMLConsistency.uml.UMLDefinition;
 import org.fudan.UMLConsistency.uml.UMLDefinitionReader;
 import org.fudan.UMLConsistency.uml.UMLFactory;
+import org.fudan.UMLConsistency.uml.cons.AttributeType;
+import org.fudan.UMLConsistency.uml.cons.RelationType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +21,7 @@ import java.util.Map;
  * @description:
  */
 @Component
-public class SimpleUMLFactory implements UMLFactory {
+public class SimpleUMLFactory implements UMLFactory, ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private UMLDefinitionReader umlDefinitionReader;
@@ -24,8 +29,22 @@ public class SimpleUMLFactory implements UMLFactory {
     private final Map<String, UMLDefinition> umlDefinitionMap = new HashMap<>();
 
     @Override
-    public void refresh(UMLDefinitionReader umlDefinitionReader) {
-        //TODO: 实现从文件流中读取uml图定义存储在umlDefinitionMap中
+    public void refresh() {
+        for (Map.Entry<String, Map<String, String>> newClass : umlDefinitionReader.getAllClass().entrySet()) {
+            SimpleUMLDefinition definition = new SimpleUMLDefinition(newClass.getKey());
+            for (Map.Entry<String, String> attribute : newClass.getValue().entrySet()) {
+                definition.addAttribute(attribute.getKey(), AttributeType.typeOf(attribute.getValue()));
+            }
+            umlDefinitionMap.put(newClass.getKey(), definition);
+        }
+        for (Map.Entry<String, Map<String, String>> relation : umlDefinitionReader.getAllRelation().entrySet()) {
+            String[] keys = new String[2];
+            int i = 0;
+            for (String key : relation.getValue().keySet()) {
+                keys[i++] = key;
+            }
+            setReference(keys[0], keys[1], relation.getValue());
+        }
     }
 
     @Override
@@ -36,5 +55,22 @@ public class SimpleUMLFactory implements UMLFactory {
     @Override
     public UMLBean getBeanNewInstance(String UMLName, String instanceName) {
         return umlDefinitionMap.get(UMLName).getNewInstance(instanceName);
+    }
+
+    private void setReference(String a, String b, Map<String, String> relation){
+        setReference(umlDefinitionMap.get(a),
+                    umlDefinitionMap.get(b),
+                    RelationType.typeOf(relation.get(a)),
+                    RelationType.typeOf(relation.get(b)));
+    }
+
+    private void setReference(UMLDefinition a, UMLDefinition b, RelationType aType, RelationType bType){
+        a.addReference(b, aType);
+        b.addReference(a, bType);
+    }
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        refresh();
     }
 }

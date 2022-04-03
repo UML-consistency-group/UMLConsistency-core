@@ -13,6 +13,28 @@ import java.util.Set;
 public interface UMLDefinition {
 
     /**
+     * Get current name of this difinition
+     * @return name
+     */
+    String getName();
+
+    /**
+     * Add new attribute to definition
+     * @param name The name of new attribute
+     * @param type The type of new attribute
+     * @return self
+     */
+    UMLDefinition addAttribute(String name, AttributeType type);
+
+    /**
+     * Add new relation to definition
+     * @param target The relation target
+     * @param type   The relation type
+     * @return self
+     */
+    UMLDefinition addReference(UMLDefinition target, RelationType type);
+
+    /**
      * Get all attribute declared by the UML
      * @return The attribute name list of the UML
      */

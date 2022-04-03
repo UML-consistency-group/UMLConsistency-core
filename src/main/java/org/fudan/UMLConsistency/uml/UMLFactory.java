@@ -10,9 +10,8 @@ public interface UMLFactory {
     /**
      * Refresh definition of UMLDefinitionMap from the reader.
      * Get all uml definition from reader
-     * @param umlDefinitionReader The definition reader needed
      */
-    void refresh(UMLDefinitionReader umlDefinitionReader);
+    void refresh();
 
     /**
      * Find the definition of the target UML by name

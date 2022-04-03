@@ -2,12 +2,11 @@ package org.fudan.UMLConsistency.uml.impl;
 
 import org.fudan.UMLConsistency.uml.UMLDefinition;
 import org.fudan.UMLConsistency.uml.UMLDefinitionReader;
-import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.yaml.snakeyaml.Yaml;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
+import java.util.Map;
 
 /**
  * @author: zlyang
@@ -16,23 +15,22 @@ import java.io.Reader;
  */
 public class SimpleUMLDefinitionReader implements UMLDefinitionReader {
 
-    private final BufferedReader bufferedReader;
+    private static final int MAX_LINE_LEN = 1024;
+
+    private final Map<String, Map<String, Map<String, String>>> definitions;
 
     public SimpleUMLDefinitionReader(InputStream inputStream){
-        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        definitions = new Yaml().load(inputStream);
     }
 
-    public SimpleUMLDefinitionReader(Reader reader){
-        this.bufferedReader = new BufferedReader(reader);
+
+    @Override
+    public Map<String, Map<String, String>> getAllClass() {
+        return definitions.get("class");
     }
 
     @Override
-    public UMLDefinition next() {
-        return null;
-    }
-
-    @Override
-    public boolean hasNext() {
-        return false;
+    public Map<String, Map<String, String>> getAllRelation() {
+        return definitions.get("association");
     }
 }
