@@ -1,6 +1,6 @@
 package org.fudan.UMLConsistency.uml.impl;
 
-import org.fudan.UMLConsistency.uml.UMLBean;
+import org.fudan.UMLConsistency.uml.UMLInstance;
 import org.fudan.UMLConsistency.uml.UMLDefinition;
 import org.fudan.UMLConsistency.uml.cons.AttributeType;
 import org.fudan.UMLConsistency.uml.cons.RelationType;
@@ -75,8 +75,8 @@ public class SimpleUMLDefinition implements UMLDefinition {
     }
 
     @Override
-    public UMLBean getNewInstance(String name) {
-        return new SimpleUMLBean(name, this);
+    public UMLInstance getNewInstance(String name) {
+        return new SimpleUMLInstance(name, this);
     }
 
     @Override

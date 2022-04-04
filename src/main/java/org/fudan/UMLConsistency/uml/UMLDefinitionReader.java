@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author: zlyang
  * @date: 2022-04-03 10:42
- * @description:
+ * @description: UML定义读取接口，UMLFactory通过该接口获取到UML图中所有类的定义
  */
 public interface UMLDefinitionReader {
 

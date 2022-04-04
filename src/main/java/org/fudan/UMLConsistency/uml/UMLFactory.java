@@ -3,7 +3,7 @@ package org.fudan.UMLConsistency.uml;
 /**
  * @author: zlyang
  * @date: 2022-04-03 10:38
- * @description:
+ * @description: UML工厂，存储各个UML类图定义，通过类名返回相应的类实例
  */
 public interface UMLFactory {
 
@@ -26,6 +26,6 @@ public interface UMLFactory {
      * @param instanceName instance name
      * @return The new instance
      */
-    UMLBean getBeanNewInstance(String UMLName, String instanceName);
+    UMLInstance getNewInstance(String UMLName, String instanceName);
 
 }

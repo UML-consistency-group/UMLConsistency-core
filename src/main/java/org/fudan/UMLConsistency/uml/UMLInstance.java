@@ -5,9 +5,9 @@ import java.util.Set;
 /**
  * @author: zlyang
  * @date: 2022-04-03 11:28
- * @description:
+ * @description: UML类的具体实例接口，通过该接口获取该实例的相关信息
  */
-public interface UMLBean {
+public interface UMLInstance {
 
     /**
      * Get the name of this bean
@@ -28,14 +28,14 @@ public interface UMLBean {
      * @param value The value to set
      * @return  Return self for chain set
      */
-    UMLBean set(String name, Object value);
+    UMLInstance set(String name, Object value);
 
     /**
      * Get current bean's relation UML beans
      * @param name The relation UML name
      * @return  The list of reference instances of target UML
      */
-    Set<UMLBean> getReferenceList(String name);
+    Set<UMLInstance> getReferenceList(String name);
 
     /**
      * Get the num of current bean's relation to target UML beans
@@ -50,5 +50,5 @@ public interface UMLBean {
      * @param ref  The ref of the bean
      * @return Return self for chain set
      */
-    UMLBean setReference(String name, UMLBean ref);
+    UMLInstance setReference(String name, UMLInstance ref);
 }

@@ -1,6 +1,6 @@
 package org.fudan.UMLConsistency.uml.impl;
 
-import org.fudan.UMLConsistency.uml.UMLBean;
+import org.fudan.UMLConsistency.uml.UMLInstance;
 import org.fudan.UMLConsistency.uml.UMLDefinition;
 
 import java.util.HashMap;
@@ -13,7 +13,7 @@ import java.util.Set;
  * @date: 2022-04-03 12:52
  * @description:
  */
-public class SimpleUMLBean implements UMLBean {
+public class SimpleUMLInstance implements UMLInstance {
 
     private final String name;
 
@@ -21,9 +21,9 @@ public class SimpleUMLBean implements UMLBean {
 
     private final Map<String, Object> attributes;
 
-    private final Map<String, Set<UMLBean>> references;
+    private final Map<String, Set<UMLInstance>> references;
 
-    public SimpleUMLBean(String name, UMLDefinition umlDefinition){
+    public SimpleUMLInstance(String name, UMLDefinition umlDefinition){
         this.name = name;
         this.umlDefinition = umlDefinition;
         this.attributes = new HashMap<>(8);
@@ -41,7 +41,7 @@ public class SimpleUMLBean implements UMLBean {
     }
 
     @Override
-    public UMLBean set(String name, Object value) {
+    public UMLInstance set(String name, Object value) {
         if(!isValidAttribute(name)){
             //TODO: Throw error of invalid name
         }
@@ -50,7 +50,7 @@ public class SimpleUMLBean implements UMLBean {
     }
 
     @Override
-    public Set<UMLBean> getReferenceList(String name) {
+    public Set<UMLInstance> getReferenceList(String name) {
         if(!isValidReference(name)){
             //TODO: Throw error of invalid name
         }
@@ -66,7 +66,7 @@ public class SimpleUMLBean implements UMLBean {
     }
 
     @Override
-    public UMLBean setReference(String name, UMLBean ref) {
+    public UMLInstance setReference(String name, UMLInstance ref) {
         if(!isValidReference(name)){
             //TODO: Throw error of invalid name
         }

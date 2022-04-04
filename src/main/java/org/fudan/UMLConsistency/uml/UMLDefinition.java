@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * @author: zlyang
  * @date: 2022-04-03 10:44
- * @description:
+ * @description: UML具体类定义接口，通过该接口获取类定义相关信息
  */
 public interface UMLDefinition {
 
@@ -80,6 +80,6 @@ public interface UMLDefinition {
      * @param name Instance name
      * @return The new instance
      */
-    UMLBean getNewInstance(String name);
+    UMLInstance getNewInstance(String name);
 
 }

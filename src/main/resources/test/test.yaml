@@ -6,6 +6,6 @@ class:
     x: Boolean
 
 association:
-  R:
+  aTOb_bTOa:
     A: single
     B: multiple

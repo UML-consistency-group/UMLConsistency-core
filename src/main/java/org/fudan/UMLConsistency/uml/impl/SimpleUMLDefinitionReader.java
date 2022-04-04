@@ -1,8 +1,6 @@
 package org.fudan.UMLConsistency.uml.impl;
 
-import org.fudan.UMLConsistency.uml.UMLDefinition;
 import org.fudan.UMLConsistency.uml.UMLDefinitionReader;
-import org.springframework.util.StringUtils;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
@@ -15,7 +13,6 @@ import java.util.Map;
  */
 public class SimpleUMLDefinitionReader implements UMLDefinitionReader {
 
-    private static final int MAX_LINE_LEN = 1024;
 
     private final Map<String, Map<String, Map<String, String>>> definitions;
 

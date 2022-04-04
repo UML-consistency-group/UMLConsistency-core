@@ -1,6 +1,6 @@
 package org.fudan.UMLConsistency.uml.impl;
 
-import org.fudan.UMLConsistency.uml.UMLBean;
+import org.fudan.UMLConsistency.uml.UMLInstance;
 import org.fudan.UMLConsistency.uml.UMLDefinition;
 import org.fudan.UMLConsistency.uml.UMLDefinitionReader;
 import org.fudan.UMLConsistency.uml.UMLFactory;
@@ -11,7 +11,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +52,7 @@ public class SimpleUMLFactory implements UMLFactory, ApplicationListener<Context
     }
 
     @Override
-    public UMLBean getBeanNewInstance(String UMLName, String instanceName) {
+    public UMLInstance getNewInstance(String UMLName, String instanceName) {
         return umlDefinitionMap.get(UMLName).getNewInstance(instanceName);
     }
 
