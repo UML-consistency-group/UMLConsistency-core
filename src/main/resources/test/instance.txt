@@ -1,0 +1,2 @@
+!create ibm : Company
+!set joe.name := Joe

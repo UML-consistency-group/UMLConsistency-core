@@ -2,8 +2,8 @@ package org.fudan.UMLConsistency.uml.impl;
 
 import org.fudan.UMLConsistency.uml.UMLInstance;
 import org.fudan.UMLConsistency.uml.UMLDefinition;
-import org.fudan.UMLConsistency.uml.cons.AttributeType;
-import org.fudan.UMLConsistency.uml.cons.RelationType;
+import org.fudan.UMLConsistency.cons.AttributeType;
+import org.fudan.UMLConsistency.cons.RelationType;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -19,7 +19,19 @@ public class SimpleUMLDefinition implements UMLDefinition {
 
     private final Map<String, AttributeType> attributes;
 
-    private final Map<UMLDefinition, RelationType> references;
+    private final Map<String, RefTarget> references;
+
+    private class RefTarget{
+
+        private final RelationType relationType;
+
+        private final UMLDefinition umlDefinition;
+
+        public RefTarget(RelationType relationType, UMLDefinition umlDefinition) {
+            this.relationType = relationType;
+            this.umlDefinition = umlDefinition;
+        }
+    }
 
     public SimpleUMLDefinition(String name){
         this.name = name;
@@ -40,7 +52,7 @@ public class SimpleUMLDefinition implements UMLDefinition {
 
     @Override
     public UMLDefinition addReference(UMLDefinition target, RelationType type) {
-        references.put(target, type);
+        references.put(target.getName(), new RefTarget(type, target));
         return this;
     }
 
@@ -56,7 +68,7 @@ public class SimpleUMLDefinition implements UMLDefinition {
 
     @Override
     public Set<UMLDefinition> getAllReference() {
-        return references.keySet();
+        return references.values().stream().map(e -> e.umlDefinition).collect(Collectors.toSet());
     }
 
     @Override
@@ -71,7 +83,7 @@ public class SimpleUMLDefinition implements UMLDefinition {
 
     @Override
     public RelationType getReferenceType(String name) {
-        return references.get(name);
+        return references.get(name).relationType;
     }
 
     @Override
@@ -84,7 +96,7 @@ public class SimpleUMLDefinition implements UMLDefinition {
         return "SimpleUMLDefinition{" +
                 "name='" + name + '\'' +
                 ", attributes=" + attributes +
-                ", references=" + references.entrySet().stream().map(e -> e.getKey().getName() + ": " + e.getValue().toString()).collect(Collectors.toList()) +
+                ", references=" + new ArrayList<>(references.keySet()) +
                 '}';
     }
 }

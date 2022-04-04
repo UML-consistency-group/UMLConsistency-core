@@ -1,4 +1,4 @@
-package org.fudan.UMLConsistency.uml.cons;
+package org.fudan.UMLConsistency.cons;
 
 import java.util.function.Function;
 

@@ -1,7 +1,7 @@
 package org.fudan.UMLConsistency.uml;
 
-import org.fudan.UMLConsistency.uml.cons.AttributeType;
-import org.fudan.UMLConsistency.uml.cons.RelationType;
+import org.fudan.UMLConsistency.cons.AttributeType;
+import org.fudan.UMLConsistency.cons.RelationType;
 
 import java.util.Set;
 
