@@ -28,7 +28,7 @@ public enum RelationType {
         return name;
     }
 
-    private String name;
+    private final String name;
 
     public static RelationType typeOf(String s){
         for (RelationType value : RelationType.values()) {

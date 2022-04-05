@@ -1,7 +1,7 @@
 package org.fudan.UMLConsistency.config;
 
-import org.fudan.UMLConsistency.service.InstanceService;
-import org.fudan.UMLConsistency.service.impl.SimpleInstanceService;
+import org.fudan.UMLConsistency.service.StreamInputResolver;
+import org.fudan.UMLConsistency.service.impl.SimpleStreamInputResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -17,8 +17,8 @@ import java.io.IOException;
 public class ServiceConfig {
 
     @Bean
-    InstanceService getInstanceService() throws IOException {
-        return new SimpleInstanceService(new ClassPathResource("test/instance.txt").getInputStream());
+    StreamInputResolver getStreamInputResolver() throws IOException {
+        return new SimpleStreamInputResolver(new ClassPathResource("test/instance.txt").getInputStream());
     }
 
 }

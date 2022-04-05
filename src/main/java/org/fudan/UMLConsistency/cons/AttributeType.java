@@ -26,9 +26,9 @@ public enum AttributeType {
      */
     BOOLEAN(e -> Boolean.valueOf(e.toString()), "Boolean");
 
-    private Function<Object, Object> parser;
+    private final Function<Object, Object> parser;
 
-    private String name;
+    private final String name;
 
     AttributeType(Function<Object, Object> parser, String name){
         this.name = name;
