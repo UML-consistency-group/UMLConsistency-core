@@ -5,6 +5,7 @@ import org.fudan.UMLConsistency.service.OptHandler;
 import org.fudan.UMLConsistency.service.OptHandlerType;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import java.util.Map;
  * @date: 2022-04-04 16:07
  * @description: 通过Spring容器向InstanceService中注入实现的各个操作
  */
+@Component
 public class OptHandlerListener implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
