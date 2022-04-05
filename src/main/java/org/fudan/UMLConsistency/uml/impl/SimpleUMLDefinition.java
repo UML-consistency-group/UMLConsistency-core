@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * @author: zlyang
  * @date: 2022-04-03 14:13
- * @description:
+ * @description: UMLDefinition的实现类
  */
 public class SimpleUMLDefinition implements UMLDefinition {
 
