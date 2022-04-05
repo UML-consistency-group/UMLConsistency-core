@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * @author: zlyang
  * @date: 2022-04-03 14:22
- * @description:
+ * @description: UMLFactory实现类
  */
 @Component
 public class SimpleUMLFactory implements UMLFactory, ApplicationListener<ContextRefreshedEvent> {
