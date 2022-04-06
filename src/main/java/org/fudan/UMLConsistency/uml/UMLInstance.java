@@ -66,9 +66,8 @@ public interface UMLInstance {
 
     /**
      * Insert a new reference to an UML bean
-     * @param name The name of target UML
      * @param ref  The ref of the bean
      * @return Return self for chain set
      */
-    UMLInstance setReference(String name, UMLInstance ref);
+    UMLInstance setReference(UMLInstance ref);
 }
