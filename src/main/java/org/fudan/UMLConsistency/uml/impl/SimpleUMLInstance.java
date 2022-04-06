@@ -36,6 +36,16 @@ public class SimpleUMLInstance implements UMLInstance {
     }
 
     @Override
+    public String getDefinitionName() {
+        return umlDefinition.getName();
+    }
+
+    @Override
+    public UMLDefinition getDefinition() {
+        return umlDefinition;
+    }
+
+    @Override
     public Object get(String name) {
         return attributes.get(name);
     }
