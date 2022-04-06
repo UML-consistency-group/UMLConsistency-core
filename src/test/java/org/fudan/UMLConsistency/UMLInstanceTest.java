@@ -47,6 +47,7 @@ public class UMLInstanceTest {
             System.out.println(umlInstance);
         }
     }
+
     @Test
     public void splitTest(){
         String operation = "assh hhh    jjj ss ";
