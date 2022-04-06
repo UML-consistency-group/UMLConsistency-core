@@ -34,7 +34,7 @@ public class SetHandler implements OptHandler {
     public UMLInstance handleOpt(String operation) {
         String[] attrs=operation.split(" ");
         String value = attrs[3];
-        String[] attrs2 = attrs[1].split(".");
+        String[] attrs2 = attrs[1].split("\\.");
         String instanceName = attrs2[0];
         String attributeName = attrs2[1];
         instanceStorage.setAttribute(instanceName,attributeName,value);

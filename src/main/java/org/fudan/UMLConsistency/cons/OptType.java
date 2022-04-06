@@ -65,7 +65,7 @@ public enum OptType {
 
     public static OptType getType(String name){
         for (OptType value : OptType.values()) {
-            if(value.name().equals(name)){
+            if(value.getType().equals(name)){
                 return value;
             }
         }

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author: zlyang
@@ -107,7 +108,7 @@ public class SimpleUMLInstance implements UMLInstance {
         return "SimpleUMLInstance{" +
                 "name='" + name + '\'' +
                 ", attributes=" + attributes +
-                ", references=" + references.keySet() +
+                ", references=" + references.values().stream().map(e -> String.format("{%s}", e.stream().map(UMLInstance::getName).collect(Collectors.toList()))).collect(Collectors.toList()) +
                 '}';
     }
 }
