@@ -16,6 +16,26 @@ public interface UMLInstance {
     String getName();
 
     /**
+     * Get the UMLDefinition Name of current instance
+     * @return UMLDefinition name
+     */
+    String getDefinitionName();
+
+    /**
+     * Get the UMLDefinition of current instance
+     * @return UMLDefinition
+     */
+    UMLDefinition getDefinition();
+
+
+    /**
+     * 删除一个关系
+     * @param instanceToRemove 需要删除的对象实例
+     */
+    void removeReference(UMLInstance instanceToRemove);
+
+
+    /**
      * Get target value
      * @param name The name of target attribute
      * @return Using object for all attribute
@@ -46,9 +66,8 @@ public interface UMLInstance {
 
     /**
      * Insert a new reference to an UML bean
-     * @param name The name of target UML
      * @param ref  The ref of the bean
      * @return Return self for chain set
      */
-    UMLInstance setReference(String name, UMLInstance ref);
+    UMLInstance setReference(UMLInstance ref);
 }

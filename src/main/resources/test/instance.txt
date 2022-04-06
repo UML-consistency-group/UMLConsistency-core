@@ -1,9 +1,5 @@
-!create ibm : Company
-!set joe.name := Joe
-xcasdfas !sdre
-sef
-www   !erww
-  !www
-!create
-asdf
-
+!create Car : car1
+!create Rental : rental1
+!create CarGroup : carGroup1
+!create Branch : branch1
+!create Customer : customer1

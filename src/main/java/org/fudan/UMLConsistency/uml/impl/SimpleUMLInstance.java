@@ -36,6 +36,23 @@ public class SimpleUMLInstance implements UMLInstance {
     }
 
     @Override
+    public String getDefinitionName() {
+        return umlDefinition.getName();
+    }
+
+    @Override
+    public UMLDefinition getDefinition() {
+        return umlDefinition;
+    }
+
+    @Override
+    public void removeReference(UMLInstance instanceToRemove) {
+        Set<UMLInstance> umlInstances = references.get(instanceToRemove.getName());
+        umlInstances.remove(instanceToRemove);
+    }
+
+
+    @Override
     public Object get(String name) {
         return attributes.get(name);
     }
@@ -66,7 +83,8 @@ public class SimpleUMLInstance implements UMLInstance {
     }
 
     @Override
-    public UMLInstance setReference(String name, UMLInstance ref) {
+    public UMLInstance setReference(UMLInstance ref) {
+        String name = ref.getDefinitionName();
         if(!isValidReference(name)){
             //TODO: Throw error of invalid name
         }
@@ -82,5 +100,12 @@ public class SimpleUMLInstance implements UMLInstance {
         return umlDefinition.isContainReference(name);
     }
 
-
+    @Override
+    public String toString() {
+        return "SimpleUMLInstance{" +
+                "name='" + name + '\'' +
+                ", attributes=" + attributes +
+                ", references=" + references.keySet() +
+                '}';
+    }
 }

@@ -22,8 +22,11 @@ association:
     Customer: mutiple
     Rental: multiple
   Car_Rental:
-    Rental: single
-    Car: mutiple
-  Car_CarGroup:
+    Rental: multiple
     Car: single
+  Car_CarGroup:
+    Car: mutiple
+    CarGroup: single
+  CarGroup_Branch:
     CarGroup: mutiple
+    Branch: mutiple
