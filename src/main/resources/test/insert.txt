@@ -4,3 +4,5 @@
 !create Branch : branch1
 !create Customer : customer1
 
+!insert (car1,rental1) into Car_Rental
+!insert (car1,carGroup1) into Car_CarGroup

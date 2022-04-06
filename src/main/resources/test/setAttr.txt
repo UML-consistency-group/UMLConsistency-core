@@ -4,3 +4,8 @@
 !create Branch : branch1
 !create Customer : customer1
 
+!set car1.registrationNumber := "AE86"
+!set rental1.id := "1"
+
+
+

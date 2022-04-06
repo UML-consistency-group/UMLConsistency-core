@@ -1,0 +1,11 @@
+!create Car : car1
+!create Rental : rental1
+!create CarGroup : carGroup1
+!create Branch : branch1
+!create Customer : customer1
+
+!insert (car1,rental1) into Car_Rental
+!insert (car1,carGroup1) into Car_CarGroup
+
+!delete (car1,rental1) into Car_Rental
+!delete (car1,carGroup1) into Car_CarGroup

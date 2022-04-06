@@ -16,7 +16,30 @@ public enum OptType {
      * 对应设置属性操作:
      * !set InstanceName.AttributeName := value
      */
-    SET(2, "set");
+    SET(2, "set"),
+
+    /**
+     * 销毁实例对象
+     * !destroy InstanceName
+     */
+    DESTROY(3,"destroy"),
+
+    /**
+     * 建立关系
+     * !insert (InstanceName1,InstanceName2) into assoc
+     */
+    INSERT(4,"insert"),
+
+    /**
+     * 销毁关系
+     * !delete (InstanceName1,InstanceName2) from assoc
+     */
+    DELETE(5,"delete");
+
+    /**
+     *
+     */
+
 
     public String getType() {
         return type;

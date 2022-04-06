@@ -4,3 +4,5 @@
 !create Branch : branch1
 !create Customer : customer1
 
+!destroy car1
+!destroy branch1

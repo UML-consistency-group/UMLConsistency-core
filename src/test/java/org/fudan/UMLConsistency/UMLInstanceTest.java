@@ -48,6 +48,15 @@ public class UMLInstanceTest {
         }
     }
 
+    @Test
+    public void splitTest(){
+        String operation = "assh hhh    jjj ss ";
+        String [] attrs = operation.split("\\s+");
+        for(int i=0;i< attrs.length;i++){
+            System.out.println(attrs[i]);
+        }
+    }
+
 
     @Test
     public void testReadFromStream(){
