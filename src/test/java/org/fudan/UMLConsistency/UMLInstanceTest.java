@@ -44,8 +44,6 @@ public class UMLInstanceTest {
         String s;
         while((s = streamInputResolver.getNext()) != null){
             UMLInstance umlInstance = createHandler.handleOpt(s);
-
-            umlInstance.set("registrationNumber", "1234");
             System.out.println(umlInstance);
         }
     }
