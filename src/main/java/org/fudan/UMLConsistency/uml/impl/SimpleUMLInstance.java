@@ -83,7 +83,8 @@ public class SimpleUMLInstance implements UMLInstance {
     }
 
     @Override
-    public UMLInstance setReference(String name, UMLInstance ref) {
+    public UMLInstance setReference(UMLInstance ref) {
+        String name = ref.getDefinitionName();
         if(!isValidReference(name)){
             //TODO: Throw error of invalid name
         }
