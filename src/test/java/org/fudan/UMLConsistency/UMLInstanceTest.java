@@ -7,7 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 /**
  * @author: zlyang
@@ -29,6 +32,12 @@ public class UMLInstanceTest {
                 System.out.println(s);
             }
         }
+    }
+
+    @Test
+    public void createTest(){
+        List<String> res = Arrays.stream("asdf  asdf sdf".split(" ")).filter(s -> !s.isBlank()).collect(Collectors.toList());
+        res.forEach(System.out::println);
     }
 
     @Test
