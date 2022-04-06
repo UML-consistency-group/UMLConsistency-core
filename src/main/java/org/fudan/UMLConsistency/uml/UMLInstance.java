@@ -27,6 +27,14 @@ public interface UMLInstance {
      */
     UMLDefinition getDefinition();
 
+
+    /**
+     * 删除一个关系
+     * @param instanceToRemove 需要删除的对象实例
+     */
+    void removeReference(UMLInstance instanceToRemove);
+
+
     /**
      * Get target value
      * @param name The name of target attribute

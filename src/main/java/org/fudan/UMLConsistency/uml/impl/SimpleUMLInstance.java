@@ -46,6 +46,13 @@ public class SimpleUMLInstance implements UMLInstance {
     }
 
     @Override
+    public void removeReference(UMLInstance instanceToRemove) {
+        Set<UMLInstance> umlInstances = references.get(instanceToRemove.getName());
+        umlInstances.remove(instanceToRemove);
+    }
+
+
+    @Override
     public Object get(String name) {
         return attributes.get(name);
     }
