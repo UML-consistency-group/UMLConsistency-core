@@ -28,6 +28,7 @@ public class UMLInstanceTest {
     @Autowired
     private OptHandler createHandler;
 
+
     @Test
     public void readTest() throws IOException {
         Scanner scanner = new Scanner(new ClassPathResource("test/instance.txt").getInputStream());

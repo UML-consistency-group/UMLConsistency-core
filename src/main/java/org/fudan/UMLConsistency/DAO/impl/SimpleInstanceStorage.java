@@ -74,4 +74,11 @@ public class SimpleInstanceStorage implements InstanceStorage {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "SimpleInstanceStorage{" +
+                "instanceWarehouse=" + instanceWarehouse +
+                '}';
+    }
 }

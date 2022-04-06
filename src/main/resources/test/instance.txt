@@ -4,3 +4,14 @@
 !create Branch : branch1
 !create Customer : customer1
 
+!set car1.registrationNumber := "AE86"
+!set rental1.id := "1"
+
+!insert (car1,rental1) into Car_Rental
+!insert (car1,carGroup1) into Car_CarGroup
+
+!delete (car1,rental1) into Car_Rental
+!delete (car1,carGroup1) into Car_CarGroup
+
+!destroy car1
+!destroy branch1
