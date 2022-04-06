@@ -1,6 +1,9 @@
 package org.fudan.UMLConsistency;
 
+import org.fudan.UMLConsistency.service.StreamInputResolver;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
@@ -11,7 +14,11 @@ import java.util.Scanner;
  * @date: 2022-04-04 13:15
  * @description:
  */
+@SpringBootTest
 public class UMLInstanceTest {
+
+    @Autowired
+    private StreamInputResolver streamInputResolver;
 
     @Test
     public void readTest() throws IOException {
@@ -21,6 +28,14 @@ public class UMLInstanceTest {
             if(!s.isEmpty() && s.charAt(0) == '!'){
                 System.out.println(s);
             }
+        }
+    }
+
+    @Test
+    public void testReadFromStream(){
+        String s;
+        while((s = streamInputResolver.getNext()) != null){
+            System.out.println(s);
         }
     }
 

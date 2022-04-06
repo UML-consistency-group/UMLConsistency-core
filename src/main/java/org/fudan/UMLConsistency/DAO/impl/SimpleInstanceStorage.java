@@ -25,7 +25,7 @@ public class SimpleInstanceStorage implements InstanceStorage {
     }
 
     @Override
-    public void setAttribute(String targetName, Object newValue) {
+    public void setAttribute(String targetName, String targetAttributeName, Object newValue) {
 
     }
 

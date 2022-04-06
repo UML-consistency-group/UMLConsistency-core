@@ -1,11 +1,29 @@
 class:
-  A:
-    x: Integer
-    bcd: String
-  B:
-    x: Boolean
+  Car:
+    registrationNumber: String
+  CarGroup:
+    category: String
+  Branch:
+    id: String
+    address: String
+  Rental:
+    id: String
+    bsetPrice: Integer
+    state: String
+    agreedEnding: Integer
+  Customer:
+    id: String
+    name: String
+    birthdate: date
+    licenseExpDate: Integer
 
 association:
-  aTOb_bTOa:
-    A: single
-    B: multiple
+  Customer_Rental:
+    Customer: mutiple
+    Rental: multiple
+  Car_Rental:
+    Rental: single
+    Car: mutiple
+  Car_CarGroup:
+    Car: single
+    CarGroup: mutiple
