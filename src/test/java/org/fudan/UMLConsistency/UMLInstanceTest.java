@@ -39,6 +39,14 @@ public class UMLInstanceTest {
         List<String> res = Arrays.stream("asdf  asdf sdf".split(" ")).filter(s -> !s.isBlank()).collect(Collectors.toList());
         res.forEach(System.out::println);
     }
+    @Test
+    public void splitTest(){
+        String operation = "assh hhh    jjj ss ";
+        String [] attrs = operation.split("\\s+");
+        for(int i=0;i< attrs.length;i++){
+            System.out.println(attrs[i]);
+        }
+    }
 
     @Test
     public void testReadFromStream(){
