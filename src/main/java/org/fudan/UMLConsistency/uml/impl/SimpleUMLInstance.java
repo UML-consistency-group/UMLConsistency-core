@@ -47,7 +47,7 @@ public class SimpleUMLInstance implements UMLInstance {
 
     @Override
     public void removeReference(UMLInstance instanceToRemove) {
-        Set<UMLInstance> umlInstances = references.get(instanceToRemove.getName());
+        Set<UMLInstance> umlInstances = references.get(instanceToRemove.getDefinitionName());
         umlInstances.remove(instanceToRemove);
     }
 
@@ -88,7 +88,9 @@ public class SimpleUMLInstance implements UMLInstance {
         if(!isValidReference(name)){
             //TODO: Throw error of invalid name
         }
-        references.getOrDefault(name, new HashSet<>()).add(ref);
+        Set<UMLInstance> set = references.getOrDefault(name, new HashSet<>());
+        set.add(ref);
+        references.put(name, set);
         return this;
     }
 
