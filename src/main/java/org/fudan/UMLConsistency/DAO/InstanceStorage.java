@@ -27,9 +27,10 @@ public interface InstanceStorage {
     /**
      * 为实例更新属性
      * @param targetName 要更新实例对象的名字
+     * @param targetAttributeName 要更新属性的名字
      * @param newValue   需要更新的value
      */
-    void setAttribute(String targetName, Object newValue);
+    void setAttribute(String targetName, String targetAttributeName , Object newValue);
 
     /**
      * 通过实例名删除实例

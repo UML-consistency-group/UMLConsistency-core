@@ -8,6 +8,11 @@ import org.fudan.UMLConsistency.uml.UMLFactory;
 import org.fudan.UMLConsistency.uml.UMLInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author: zlyang
@@ -30,6 +35,7 @@ public class CreateHandler implements OptHandler {
     public UMLInstance handleOpt(String operation) {
         /** 分解参数 */
         String[] attrs=operation.split(" ");
+        List<String> res = Arrays.stream(operation.split(" ")).filter(s -> !s.isBlank()).collect(Collectors.toList());
         String umlName = attrs[1];
         String instanceName = attrs[3];
         UMLInstance instance = umlFactory.getNewInstance(umlName,instanceName);

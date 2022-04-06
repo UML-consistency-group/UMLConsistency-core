@@ -6,8 +6,13 @@ import org.fudan.UMLConsistency.service.OptHandlerType;
 import org.fudan.UMLConsistency.cons.OptType;
 import org.fudan.UMLConsistency.uml.UMLFactory;
 import org.fudan.UMLConsistency.uml.UMLInstance;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author: zlyang
@@ -26,16 +31,12 @@ public class SetHandler implements OptHandler {
 
     @Override
     public UMLInstance handleOpt(String operation) {
-        /** 分解参数 */
         String[] attrs=operation.split(" ");
         String value = attrs[3];
         String[] attrs2 = attrs[1].split(".");
         String instanceName = attrs2[0];
         String attributeName = attrs2[1];
-
-
-
-        instanceStorage.setAttribute(instanceName,value);
+        instanceStorage.setAttribute(instanceName,attributeName,value);
 
 
         return null;

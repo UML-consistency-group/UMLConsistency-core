@@ -1,2 +1,9 @@
 !create ibm : Company
 !set joe.name := Joe
+xcasdfas !sdre
+sef
+www   !erww
+  !www
+!create
+asdf
+
