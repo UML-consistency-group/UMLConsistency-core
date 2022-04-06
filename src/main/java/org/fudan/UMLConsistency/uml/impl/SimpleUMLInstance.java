@@ -82,5 +82,12 @@ public class SimpleUMLInstance implements UMLInstance {
         return umlDefinition.isContainReference(name);
     }
 
-
+    @Override
+    public String toString() {
+        return "SimpleUMLInstance{" +
+                "name='" + name + '\'' +
+                ", attributes=" + attributes +
+                ", references=" + references.keySet() +
+                '}';
+    }
 }

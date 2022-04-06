@@ -1,6 +1,8 @@
 package org.fudan.UMLConsistency;
 
+import org.fudan.UMLConsistency.service.OptHandler;
 import org.fudan.UMLConsistency.service.StreamInputResolver;
+import org.fudan.UMLConsistency.uml.UMLInstance;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,9 @@ public class UMLInstanceTest {
     @Autowired
     private StreamInputResolver streamInputResolver;
 
+    @Autowired
+    private OptHandler createHandler;
+
     @Test
     public void readTest() throws IOException {
         Scanner scanner = new Scanner(new ClassPathResource("test/instance.txt").getInputStream());
@@ -36,9 +41,15 @@ public class UMLInstanceTest {
 
     @Test
     public void createTest(){
-        List<String> res = Arrays.stream("asdf  asdf sdf".split(" ")).filter(s -> !s.isBlank()).collect(Collectors.toList());
-        res.forEach(System.out::println);
+        String s;
+        while((s = streamInputResolver.getNext()) != null){
+            UMLInstance umlInstance = createHandler.handleOpt(s);
+
+            umlInstance.set("registrationNumber", "1234");
+            System.out.println(umlInstance);
+        }
     }
+
 
     @Test
     public void testReadFromStream(){
